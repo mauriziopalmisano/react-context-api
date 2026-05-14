@@ -5,9 +5,9 @@ import useBudget from '../hooks/useBudget.js';
 function Prodotti() {
   const { fetchedData: productsList, loadingStatus, error } = useFetch('https://fakestoreapi.com/products');
   
-  const {budgetMode} = useBudget();
+  const { maxPrice } = useBudget();
 
-  const budgetProductsList = budgetMode ? productsList.filter(product => product.price <= 30) : productsList;
+  const budgetProductsList = maxPrice !== '' ? productsList.filter(product => product.price <= Number(maxPrice)) : productsList;
 
   return (
     <div className=' container mt-4'>
