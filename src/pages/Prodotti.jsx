@@ -1,14 +1,19 @@
 import useFetch from '../hooks/useFetch.js'
 import { Link } from 'react-router-dom';
+import useBudget from '../hooks/useBudget.js';
 
 function Prodotti() {
   const { fetchedData: productsList, loadingStatus, error } = useFetch('https://fakestoreapi.com/products');
+  
+  const {budgetMode} = useBudget();
+
+  const budgetProductsList = budgetMode ? productsList.filter(product => product.price <= 30) : productsList;
 
   return (
     <div className=' container mt-4'>
       <div className=' row'>
         {loadingStatus && (<h1>Caricamento</h1>)}
-        {productsList && productsList.map(prodotto => {
+        {budgetProductsList && budgetProductsList.map(prodotto => {
           const { id, title, category, price, image } = prodotto;
           return (
             <div className='col-4' key={id}>
