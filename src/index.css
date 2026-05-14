@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.my-active {
+    color: #1fb3ee !important;
+    text-decoration: underline;
+    transition: all 0.3s ease;
+}
+
+.img-card{
+    width: 200px;
+    aspect-ratio: 1;
+}
+
+.img-navbar{
+    height: 50px;
+    
+}
